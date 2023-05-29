@@ -7,12 +7,14 @@ const bodyparser = require("body-parser");
 const cors = require("cors");
 const AuthRouter = require("./Route/auth");
 const EmailRouter = require("./Route/mail");
+const DraftRoute = require("./Route/draft");
 //middleware
 
 app.use(bodyparser.json({ extended: false }));
 app.use(cors());
 app.use(AuthRouter);
 app.use(EmailRouter);
+app.use(DraftRoute);
 //modules
 
 const User = require("./Module/Auth");
