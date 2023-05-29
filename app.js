@@ -18,6 +18,7 @@ app.use(EmailRouter);
 const User = require("./Module/Auth");
 const Inbox = require("./Module/inbox");
 const SentItem = require("./Module/sentmail");
+const Draft = require("./Module/Draft");
 
 app.use("/", (req, res, next) => {
   console.log("req", req.body);
@@ -26,9 +27,12 @@ app.use("/", (req, res, next) => {
 // Association
 User.hasMany(Inbox);
 User.hasMany(SentItem);
+User.hasMany(Draft);
 
 Inbox.belongsTo(User);
 SentItem.belongsTo(User);
+Draft.belongsTo(User);
+
 DB.sync()
   .then(() => {
     app.listen(3000, () => {

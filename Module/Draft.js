@@ -1,7 +1,8 @@
 const Sequelize = require("sequelize");
 const db = require("../Utli/database");
+// const { Module } = require("module");
 
-const SentItem = db.define("senditem", {
+const Draft = db.define("draft", {
   id: {
     type: Sequelize.INTEGER,
     allowNull: false,
@@ -11,6 +12,7 @@ const SentItem = db.define("senditem", {
   To: {
     type: Sequelize.STRING,
   },
+
   subject: {
     type: Sequelize.STRING,
   },
@@ -19,4 +21,4 @@ const SentItem = db.define("senditem", {
   },
 });
 
-module.exports = SentItem;
+module.exports = Draft;
