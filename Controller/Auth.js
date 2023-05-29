@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const Auth = require("../Module/Auth");
+const JWT = require("jsonwebtoken");
 exports.signup = (req, res, next) => {
   //   res.send(req.body);
 
@@ -35,6 +36,7 @@ exports.login = async (req, res, next) => {
       if (isMatch) {
         res.status(200).json({
           message: "login success",
+          Token: getToken(user[0].id),
         });
       } else {
         res.status(400).json({ error: "Enter valid data", isMatch });
@@ -46,3 +48,7 @@ exports.login = async (req, res, next) => {
 
   // res.send(req.body);
 };
+
+function getToken(id) {
+  return JWT.sign({ userId: id }, process.env.JWT_SECRET_KEY);
+}
