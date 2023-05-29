@@ -13,3 +13,11 @@ exports.getDraft = (req, res, next) => {
     .then((data) => res.status(200).json(data))
     .catch((err) => res.status(401).json({ error: "failed" }));
 };
+
+exports.deleteDraft = (req, res, next) => {
+  req.user
+    .getDrafts({ where: { id: req.body.id } })
+    .then((data) => data[0].destroy())
+    .then((data) => res.status(200).json({ message: "successfully deleted" }))
+    .catch((err) => res.status(401).json({ error: "failed" }));
+};
