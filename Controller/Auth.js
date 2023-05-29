@@ -39,14 +39,12 @@ exports.login = async (req, res, next) => {
           Token: getToken(user[0].id),
         });
       } else {
-        res.status(400).json({ error: "Enter valid data", isMatch });
+        res.status(400).json({ error: "Enter valid data" });
       }
     }
   } catch (err) {
-    res.status(400).json({ error: "Enter valid data", err: err });
+    res.status(400).json({ error: "Enter valid data" });
   }
-
-  // res.send(req.body);
 };
 
 function getToken(id) {
