@@ -55,3 +55,21 @@ exports.updateMail = async (req, res, next) => {
     res.status(401).json({ error: "failed" });
   }
 };
+
+exports.deleteSentmail = (req, res, next) => {
+  req.user
+
+    .getSenditems({ where: { id: req.body.id } })
+    .then((data) => data[0].destroy())
+    .then((data) => res.status(200).json({ message: "successfully deleted" }))
+    .catch((err) => res.status(401).json({ error: "failed" }));
+};
+
+exports.deleteinboxmail = (req, res, next) => {
+  req.user
+
+    .getInboxes({ where: { id: req.body.id } })
+    .then((data) => data[0].destroy())
+    .then((data) => res.status(200).json({ message: "successfully deleted" }))
+    .catch((err) => res.status(401).json({ error: "failed" }));
+};
