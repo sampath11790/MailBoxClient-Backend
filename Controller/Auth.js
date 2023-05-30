@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const Auth = require("../Module/Auth");
+const Auth = require("../Model/Auth");
 const JWT = require("jsonwebtoken");
 exports.signup = (req, res, next) => {
   //   res.send(req.body);

@@ -1,4 +1,4 @@
-const Draft = require("../Module/Draft");
+const Draft = require("../Model/Draft");
 
 exports.postDraft = (req, res, next) => {
   req.user

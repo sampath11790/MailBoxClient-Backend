@@ -1,5 +1,5 @@
 const JWT = require("jsonwebtoken");
-const Auth = require("../Module/Auth");
+const Auth = require("../Model/Auth");
 
 const tokenValidation = async (req, res, next) => {
   try {
